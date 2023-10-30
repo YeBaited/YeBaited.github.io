@@ -141,9 +141,9 @@
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="Works/AntiCheat.PNG" class="w-100" alt="...">
+                        <img src="Works/AntiCheat.PNG" class="w-100" alt="..." data-bs-toggle="modal" data-bs-target="#ImageModal" onclick="ChangeImage('Works/AntiCheat.PNG')">
                         <div class="carousel-caption">
-                            <h1>test</h1>
+                            <h1>a</h1>
                             <p>Anticheat</p>
                         </div>
                       </div>
@@ -164,6 +164,7 @@
                     </button>
                 </div>
             </div>
+
 
             <div class="col-md-3 bg-dark-subtle mx-3 rounded">
                 <h1 class="text-center text-primary-emphasis text-decoration-underline">HTML</h1>
@@ -192,7 +193,7 @@
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#Html     " data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#Html" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
@@ -232,7 +233,24 @@
                     </button>
                 </div>
             </div>
-    
+        </div>
+
+        <div class="modal fade" id="ImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content" style="max-height: 80vh;">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">RLua</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body overflow-hidden text-center">
+                  <img class="object-fit-contain rounded border border-2 border-primary" width="90%" id="ModalImg" src="Works/AntiCheat.PNG" alt="RLUA Images">
+                </div>
+                <hr>
+                <div class="modal-footer bg-primary-subtle">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
         </div>
 
         <!-- WORK AREA BELOW -->
@@ -276,7 +294,10 @@
 </style>
 
 <script>
-    let images = ['photoFromInternet', 'photoFromInternet2', 'photoFromInternet3'];
+    let ModalImage = document.getElementById("ModalImg");
 
+    function ChangeImage(img){
+        ModalImage.src = img;
+    };
     
 </script>
