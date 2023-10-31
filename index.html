@@ -37,10 +37,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <div class="row justify-content-center position-relative d-none" id="Intro"> <!-- Intro -->
+        <div class="row justify-content-center position-relative" id="Intro"> <!-- Intro -->
             <div class="col-auto">
                 
-                <img src="assets/a1.png" alt="Profile" width="300px" onload="Loaded('Intro', 'PlaceHolderIntro')">
+                <img src="assets/a1.png" alt="Profile" width="300px" onload="try{Loaded('Intro', 'PlaceHolderIntro')} catch{}">
                 
             </div>
             <div class="col-auto">
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center position-relative placeholder-glow" id="PlaceHolderIntro"> <!-- PlaceHolder Intro -->
+        <div class="row justify-content-center position-relative placeholder-glow d-none" id="PlaceHolderIntro"> <!-- PlaceHolder Intro -->
             <div class="col-auto placeholder" style="width: 300px; height: 300px;">
                 
             </div>
@@ -331,24 +331,33 @@
     console.log("Github: https://github.com/YeBaited");
     let ModalImage = document.getElementById("ModalImg");
 
-    function ChangeImage(img){
-        ModalImage.src = img;
-    };
-
-
-
-    function Loaded(id){
-        var LoadedItem = document.getElementById(id)
-        LoadedItem.classList.remove("opacity-0");
-        LoadedItem.parentElement.classList.remove("placeholder", "bg-primary")
-        
-    };
-
+   
     function Loaded(SelfId, PlaceHolderId){
         console.log("SelfId: ", SelfId, " PlaceHolderId: ", PlaceHolderId)
         document.getElementById(SelfId).classList.remove("d-none")
         document.getElementById(PlaceHolderId).classList.add("d-none")
     }
+   
+
+    function is_cached(src) {
+        var image = new Image();
+        image.src = src;
+
+        return image.complete;
+    }
+
+    function ChangeImage(img){
+        ModalImage.src = img;
+    };
+
+    if(is_cached("assets/a1.png")){
+        Loaded('Intro', 'PlaceHolderIntro')
+    } else {
+        document.getElementById("PlaceHolderIntro").classList.remove("d-none")
+        document.getElementById("Intro").classList.add("d-none")
+    }
+    
+
 </script>
 
 
